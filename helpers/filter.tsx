@@ -20,11 +20,11 @@ const filter = (rules: string[], condition:(item:any)=>boolean, slice: number, s
       const isNumber = () => !!Number(rule.charAt(0));     
 
       if (isNumber() && condition(rule)) {
-        rule = searchParam ? Highlight(rule, searchParam) : rule;
+        rule = searchParam ? Highlight(rule, searchParam) || '' : rule;
         filtered[index] = { title: rule, rules:[] }
       } 
       if(isNumber() && !condition(rule)) {
-        rule = searchParam ? Highlight(rule, searchParam) : rule;
+        rule = searchParam ? Highlight(rule, searchParam) || '' : rule;
         filtered[index].rules.push(rule);
       }
     })
